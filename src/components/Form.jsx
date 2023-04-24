@@ -62,9 +62,7 @@ const Form = ({ tweet, tweets, setTweets, setTweet }) => {
       </div>
       <div className='shadow-lg bg-slate-200 rounded-md mx-6 py-3'>
         <form onSubmit={handleSubmit}>
-          {error && (
-            <AlertError>No puedes enviar un tweet vacío o sin fecha</AlertError>
-          )}
+          {error && <AlertError>No puedes enviar un tweet vacío</AlertError>}
 
           <div className='auto-rows-auto m-4'>
             <label className='w-full'>Fecha</label>
