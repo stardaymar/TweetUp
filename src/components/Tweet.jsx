@@ -55,6 +55,7 @@ const Tweet = ({ tweet, setTweet, eliminarTweet, likes }) => {
               Eliminar
             </button>
 
+            <div className='mt-2'>{tweet.content}</div>
             <div className='mt-2'>
               <button
                 className={`relative bg-purple-500 hover:bg-purple-600 mt-3 py-1 px-4 mx-2 rounded-full text-bold text-sm ${

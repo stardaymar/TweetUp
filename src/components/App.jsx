@@ -3,6 +3,8 @@ import Header from './Header';
 import Form from './Form';
 import { useState, useEffect } from 'react';
 import ListaTweets from './ListaTweets';
+import Nav from './Nav';
+import Footer from './Footer';
 
 function App() {
   const [tweets, setTweets] = useState([]);
@@ -30,6 +32,7 @@ function App() {
 
   return (
     <>
+      <Nav />
       <div className='w-full text-center'>
         <Header />
       </div>
@@ -50,6 +53,7 @@ function App() {
           />
         </div>
       </div>
+      <Footer />
     </>
   );
 }
