@@ -1,5 +1,8 @@
-const Tweet = ({ tweet, setTweet, eliminarTweet }) => {
+import { useState } from 'react';
+
+const Tweet = ({ tweet, setTweet, eliminarTweet, likes }) => {
   const { fecha, descripcion, id } = tweet;
+  const [numLikes, setNumLikes] = useState(likes);
 
   const handleEliminar = () => {
     const respuesta = confirm('¿Desea eliminar el tweet?');
@@ -7,6 +10,12 @@ const Tweet = ({ tweet, setTweet, eliminarTweet }) => {
     if (respuesta) {
       eliminarTweet(id);
     }
+  };
+
+  const handleLikeClick = () => {
+    const newLikes = numLikes + 1;
+    localStorage.setItem(`likes_${tweet.id}`, JSON.stringify(newLikes));
+    setNumLikes(newLikes);
   };
 
   return (
@@ -36,6 +45,16 @@ const Tweet = ({ tweet, setTweet, eliminarTweet }) => {
             >
               Eliminar
             </button>
+
+            <div className='mt-2'>{tweet.content}</div>
+            <div className='mt-2'>
+              <button
+                className='text-gray-400 hover:text-blue-500 transition duration-150'
+                onClick={handleLikeClick}
+              >
+                {numLikes} {numLikes === 1 ? 'like' : 'likes'}
+              </button>
+            </div>
           </div>
         </div>
       </div>

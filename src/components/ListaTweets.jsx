@@ -1,6 +1,11 @@
 import Tweet from './Tweet';
 
 const ListaTweets = ({ tweets, setTweet, eliminarTweet }) => {
+  const getLikes = (tweetId) => {
+    const likes = localStorage.getItem(`likes_${tweetId}`);
+    return likes ? JSON.parse(likes) : 0;
+  };
+
   return (
     <div>
       {tweets && tweets.length ? (
@@ -9,12 +14,14 @@ const ListaTweets = ({ tweets, setTweet, eliminarTweet }) => {
             Tus tweets
           </div>
           {tweets.map((tweet) => {
+            const likes = getLikes(tweet.id);
             return (
               <Tweet
                 key={tweet.id}
                 tweet={tweet}
                 setTweet={setTweet}
                 eliminarTweet={eliminarTweet}
+                likes={likes}
               />
             );
           })}
