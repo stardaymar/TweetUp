@@ -28,9 +28,13 @@ const Tweet = ({ tweet, setTweet, eliminarTweet, likes }) => {
       <div className='shadow-lg bg-slate-200 rounded-md h-1/2 mx-6 mb-2'>
         <div className='py-5'>
           <div className='flex justify-center items-center mt-2'>
-            <FaUserCircle className='inline-block mr-1' size={24} />
+            <div className='flex flex-col items-center'>
+              <FaUserCircle className='inline-block mr-1' size={24} />
+              <div className='text-center'>Tu</div>
+            </div>
             {tweet.content}
           </div>
+
           <div className='mx-6 p-2'>
             <span>Fecha:</span> <span className='font-bold'>{fecha}</span>
           </div>

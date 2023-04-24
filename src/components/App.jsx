@@ -53,7 +53,10 @@ function App() {
           />
         </div>
       </div>
-      <Footer />
+
+      <div className='mt-44'>
+        <Footer />
+      </div>
     </>
   );
 }
