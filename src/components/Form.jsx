@@ -22,10 +22,11 @@ const Form = ({ tweet, tweets, setTweets, setTweet }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if ([descripcion, fecha].includes('')) {
+    if (descripcion.trim().length === 0 || fecha.trim().length === 0) {
       setError(true);
       return;
     }
+
     setError(false);
 
     // objeto de tweets
@@ -79,6 +80,12 @@ const Form = ({ tweet, tweets, setTweets, setTweet }) => {
           </div>
           <div className='auto-rows-auto m-4'>
             <label className='w-full'>Descripción</label>
+            {error && (
+              <p className='text-red-500 text-sm mt-1'>
+                La descripción no puede estar vacía
+              </p>
+            )}
+
             <input
               className='rounded p-3 shadow-lg w-full'
               type='text'
