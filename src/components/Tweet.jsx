@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { FaHeart, FaUserCircle } from 'react-icons/fa';
+import { Transition } from '@headlessui/react';
 
 const Tweet = ({ tweet, setTweet, eliminarTweet, likes }) => {
   const { fecha, descripcion, id } = tweet;
   const [numLikes, setNumLikes] = useState(likes);
+  const [isLiked, setIsLiked] = useState(false);
 
   const handleEliminar = () => {
     const respuesta = confirm('¿Desea eliminar el tweet?');
@@ -17,6 +19,8 @@ const Tweet = ({ tweet, setTweet, eliminarTweet, likes }) => {
     const newLikes = numLikes + 1;
     localStorage.setItem(`likes_${tweet.id}`, JSON.stringify(newLikes));
     setNumLikes(newLikes);
+    setIsLiked(true);
+    setTimeout(() => setIsLiked(false), 1000);
   };
 
   return (
@@ -51,12 +55,24 @@ const Tweet = ({ tweet, setTweet, eliminarTweet, likes }) => {
               Eliminar
             </button>
 
-            <div className='mt-2'>{tweet.content}</div>
             <div className='mt-2'>
               <button
-                className='bg-purple-500 hover:bg-purple-600 mt-3 py-1 px-4 mx-2 rounded-full text-bold text-sm'
+                className={`relative bg-purple-500 hover:bg-purple-600 mt-3 py-1 px-4 mx-2 rounded-full text-bold text-sm ${
+                  isLiked && 'animate-pulse'
+                }`}
                 onClick={handleLikeClick}
               >
+                <Transition
+                  show={isLiked}
+                  enter='transform ease-out duration-300'
+                  enterFrom='scale-100'
+                  enterTo='scale-125'
+                  leave='transform ease-in duration-200'
+                  leaveFrom='scale-125'
+                  leaveTo='scale-100'
+                >
+                  <FaHeart className='absolute inset-0' />
+                </Transition>
                 <FaHeart className='inline-block mr-1' />
                 {numLikes} {numLikes === 1 ? 'like' : 'likes'}
               </button>
