@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './Header';
 import Form from './Form';
 import { useState, useEffect } from 'react';
-import ListaTweets from './ListaTareas';
+import ListaTweets from './ListaTweets';
 
 function App() {
   const [tweets, setTweets] = useState([]);

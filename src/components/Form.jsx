@@ -44,7 +44,7 @@ const Form = ({ tweet, tweets, setTweets, setTweet }) => {
       setTweets(tweetsActualizados);
       setTweet({});
     } else {
-      // Spread operator ...tareas
+      // Spread operator ...tweets
       objetoTweets.id = generarId();
       setTweets([...tweets, objetoTweets]);
     }
