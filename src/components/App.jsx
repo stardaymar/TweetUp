@@ -25,7 +25,7 @@ function App() {
     const actualizarTweet = tweets.filter((tweet) => tweet.id !== id);
     // permite agregar un documento sin afectar los otros
     setTweets(actualizarTweet);
-    // Este set tareas sirve para eliminar la tarea
+    // Este set Tweets es para eliminar tweet
   };
 
   return (
@@ -38,15 +38,15 @@ function App() {
           <Form
             tweet={tweet}
             tweets={tweets}
-            setTareas={setTweets}
-            setTarea={setTweet}
+            setTweets={setTweets}
+            setTweet={setTweet}
           />
         </div>
         <div className='w-full'>
-          <ListaTareas
+          <ListaTweets
             tweets={tweets}
-            setTarea={setTweet}
-            eliminarTarea={eliminarTweet}
+            setTweet={setTweet}
+            eliminarTweet={eliminarTweet}
           />
         </div>
       </div>
