@@ -3,7 +3,7 @@ import AlertError from './AlertError';
 
 const Form = ({ tweet, tweets, setTweets, setTweet }) => {
   const [descripcion, setDescripcion] = useState('');
-  const [fecha, setFecha] = useState('');
+  const [fecha, setFecha] = useState(new Date().toISOString().substr(0, 10));
 
   const [error, setError] = useState(false);
 
@@ -74,7 +74,7 @@ const Form = ({ tweet, tweets, setTweets, setTweet }) => {
               name=''
               id=''
               placeholder='Selecciona la fecha'
-              value={fecha}
+              defaultValue={fecha}
               onChange={(e) => setFecha(e.target.value)}
             />
           </div>
