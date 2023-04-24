@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FaHeart, FaUserCircle } from 'react-icons/fa';
 
 const Tweet = ({ tweet, setTweet, eliminarTweet, likes }) => {
   const { fecha, descripcion, id } = tweet;
@@ -22,11 +23,15 @@ const Tweet = ({ tweet, setTweet, eliminarTweet, likes }) => {
     <div className=''>
       <div className='shadow-lg bg-slate-200 rounded-md h-1/2 mx-6 mb-2'>
         <div className='py-5'>
-          <div className='mx-6 p-2'>
-            <span>📱 Fecha:</span> <span className='font-bold'>{fecha}</span>
+          <div className='flex justify-center items-center mt-2'>
+            <FaUserCircle className='inline-block mr-1' size={24} />
+            {tweet.content}
           </div>
           <div className='mx-6 p-2'>
-            <span>📩 Descripción:</span>{' '}
+            <span>Fecha:</span> <span className='font-bold'>{fecha}</span>
+          </div>
+          <div className='mx-6 p-2'>
+            <span>Descripción:</span>{' '}
             <span className='font-bold'>{descripcion}</span>
           </div>
 
@@ -49,9 +54,10 @@ const Tweet = ({ tweet, setTweet, eliminarTweet, likes }) => {
             <div className='mt-2'>{tweet.content}</div>
             <div className='mt-2'>
               <button
-                className='text-gray-400 hover:text-blue-500 transition duration-150'
+                className='bg-purple-500 hover:bg-purple-600 mt-3 py-1 px-4 mx-2 rounded-full text-bold text-sm'
                 onClick={handleLikeClick}
               >
+                <FaHeart className='inline-block mr-1' />
                 {numLikes} {numLikes === 1 ? 'like' : 'likes'}
               </button>
             </div>

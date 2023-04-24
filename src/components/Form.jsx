@@ -56,14 +56,17 @@ const Form = ({ tweet, tweets, setTweets, setTweet }) => {
 
   return (
     <div className=''>
+      <div className='text-center text-xl font-bold text-slate-300 mb-2'>
+        Publica tu Tweet
+      </div>
       <div className='shadow-lg bg-slate-200 rounded-md mx-6 py-3'>
         <form onSubmit={handleSubmit}>
           {error && (
-            <AlertError>Falta diligenciar campos del formulario</AlertError>
+            <AlertError>No puedes enviar un tweet vacío o sin fecha</AlertError>
           )}
 
           <div className='auto-rows-auto m-4'>
-            <label className='w-full'>✨ Fecha</label>
+            <label className='w-full'>Fecha</label>
             <input
               className='rounded p-3 shadow-lg w-full'
               type='date'
@@ -75,7 +78,7 @@ const Form = ({ tweet, tweets, setTweets, setTweet }) => {
             />
           </div>
           <div className='auto-rows-auto m-4'>
-            <label className='w-full'>📱 Descripción</label>
+            <label className='w-full'>Descripción</label>
             <input
               className='rounded p-3 shadow-lg w-full'
               type='text'
